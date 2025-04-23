@@ -13,15 +13,13 @@ const Dashboard = () => {
     const [form, setform] = useState({})
 
     useEffect(() => {
-        console.log(session)
-
-        if (session) {
-            router.push('/login')
+        if (!session) {
+            router.push('/login') // Session nahi hai toh login pe bhejna
+        } else {
+            getData() // Session hai toh data le aao
         }
-        else {
-            getData()
-        }
-    }, [])
+    }, [session])
+    
 
     const getData = async () => {
         let u = await fetchuser(session.user.name)
