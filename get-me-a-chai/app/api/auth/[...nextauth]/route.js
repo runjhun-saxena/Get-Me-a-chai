@@ -8,6 +8,8 @@ import mongoose from "mongoose";
 import connectDb from '@/db/connectDb';
 import User from '@/models/User';
 import Payment from '@/models/Payment';
+import { NextAuthOptions } from 'next-auth'
+import GoogleProvider from 'next-auth/providers/google';
  
 
 export const authoptions =  NextAuth({
@@ -16,6 +18,10 @@ export const authoptions =  NextAuth({
       GitHubProvider({
         clientId: process.env.GITHUB_ID,
         clientSecret: process.env.GITHUB_SECRET
+      }),
+      GoogleProvider({
+        clientId: process.env.GOOGLE_CLIENT_ID,
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       }),
     //   AppleProvider({
     //     clientId: process.env.APPLE_ID,
